@@ -71,7 +71,7 @@
 
 ;; Compojure Indents
 (setq compojure-indents '(context))
-(clojure-indent compojure-indents)
+(clojure-indent compojure-indents 2)
 
 ;; Om Indents
 (setq om-indents '(div h1))
