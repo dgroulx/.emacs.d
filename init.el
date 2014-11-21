@@ -62,17 +62,20 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'yafolding-mode)
 
+(defun clojure-indent (syms indent)
+  (mapcar (lambda (sym) (put-clojure-indent sym indent)) syms))
+
 ;; Cucumber Indents
-(define-clojure-indent
-  (Given 2)
-  (When 2)
-  (Then 2)
-  (And 2)
-  (But 2))
+(setq cucumber-indents '(Given When Then And But))
+(clojure-indent cucumber-indents 2)
 
 ;; Compojure Indents
-(define-clojure-indent
-  (context 2))
+(setq compojure-indents '(context))
+(clojure-indent compojure-indents)
+
+;; Om Indents
+(setq om-indents '(div h1))
+(clojure-indent om-indents 2)
 
 ;; Cider
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
