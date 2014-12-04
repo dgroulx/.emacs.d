@@ -7,7 +7,7 @@
 			    scss-mode exec-path-from-shell nodejs-repl
 			    inf-ruby feature-mode slime yafolding
 			    yaml-mode coffee-mode nginx-mode wrap-region
-			    org markdown-mode))
+			    org markdown-mode sml-mode))
 
 (defun packages-missing-p (packages)
   (let ((package-missing-p nil))
@@ -42,10 +42,8 @@
 (define-key input-decode-map "\e[1;2A" [S-up])
 (define-key input-decode-map "\e[1:2B" [S-down])
 
-
 ;; Shift keys for window navigation
 (windmove-default-keybindings)
-
 
 ;; Keep backup files in a global location instead of local dir
 (setq backup-directory-alist `(("." . "~/.backup")))
@@ -74,8 +72,9 @@
 (clojure-indent compojure-indents 2)
 
 ;; Om Indents
-(setq om-indents '(div h1))
+(setq om-indents '(p div span h1 h2 h3 h4 h5 h6 ul li a ))
 (clojure-indent om-indents 2)
+
 
 ;; Cider
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
