@@ -7,7 +7,8 @@
 			    scss-mode exec-path-from-shell nodejs-repl
 			    inf-ruby feature-mode slime yafolding
 			    yaml-mode coffee-mode nginx-mode wrap-region
-			    org markdown-mode sml-mode))
+			    org markdown-mode sml-mode haml-mode magit
+			    projectile rspec-mode))
 
 (defun packages-missing-p (packages)
   (let ((package-missing-p nil))
@@ -36,11 +37,7 @@
 (show-paren-mode)
 (require 'ido)
 (ido-mode t)
-
-;; Appease OSX Terminal.app
-;; Requires you to add these maps to your keymaps
-(define-key input-decode-map "\e[1;2A" [S-up])
-(define-key input-decode-map "\e[1:2B" [S-down])
+(load-theme 'deeper-blue)
 
 ;; Shift keys for window navigation
 (windmove-default-keybindings)
@@ -48,6 +45,10 @@
 ;; Keep backup files in a global location instead of local dir
 (setq backup-directory-alist `(("." . "~/.backup")))
 (setq backup-by-copying t)
+
+
+;; Projectile
+(projectile-global-mode)
 
 
 ;; Elisp
@@ -63,17 +64,13 @@
 (defun clojure-indent (syms indent)
   (mapcar (lambda (sym) (put-clojure-indent sym indent)) syms))
 
-;; Cucumber Indents
+;; Cucumber Indents for Clojure features
 (setq cucumber-indents '(Given When Then And But))
 (clojure-indent cucumber-indents 2)
 
 ;; Compojure Indents
 (setq compojure-indents '(context))
 (clojure-indent compojure-indents 2)
-
-;; Om Indents
-(setq om-indents '(p div span h1 h2 h3 h4 h5 h6 ul li a ))
-(clojure-indent om-indents 2)
 
 
 ;; Cider
@@ -106,3 +103,5 @@
 
 ;; nginx
 (add-to-list 'auto-mode-alist '("\\nginx.conf$" . nginx-mode))
+
+
