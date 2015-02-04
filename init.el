@@ -8,7 +8,7 @@
 			    inf-ruby feature-mode slime yafolding
 			    yaml-mode coffee-mode nginx-mode wrap-region
 			    org markdown-mode sml-mode haml-mode magit
-			    projectile rspec-mode))
+			    projectile rspec-mode htmlize))
 
 (defun packages-missing-p (packages)
   (let ((package-missing-p nil))
